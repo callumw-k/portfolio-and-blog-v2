@@ -1,1 +1,1 @@
-## New portfolio and blog using Gatsby & Sanity
+## New portfolio and blog using Gatsby, Sanity & Chakra UI
