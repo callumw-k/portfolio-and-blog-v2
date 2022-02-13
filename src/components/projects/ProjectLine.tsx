@@ -1,17 +1,32 @@
-import React, { useEffect, useState } from "react";
-import { Flex, Heading, HStack, Image, Text } from "@chakra-ui/react";
+import React, { FunctionComponent, MouseEvent, useState } from "react";
+// @ts-ignore
+import { AspectRatio, Flex, Heading, Image, Text } from "@chakra-ui/react";
+// @ts-ignore
 import { Link } from "gatsby";
-import { motion } from "framer-motion";
+// @ts-ignore
+import { HoverHandlers, motion } from "framer-motion";
 
 const MotionImage = motion(Image);
-
-const ProjectLine = ({ title, project_type, url, link_title }) => {
+type ProjectLineProps = {
+  title: string;
+  project_type: string;
+  url: string;
+  link_title: string;
+  image_link: string;
+};
+const ProjectLine: FunctionComponent<ProjectLineProps> = ({
+  title,
+  project_type,
+  url,
+  link_title,
+  image_link,
+}) => {
   const [mouseOver, setMouseOver] = useState(false);
   const [imagePos, setImagePos] = useState([400, 20]);
-  const setPicPosition = (e) => {
-    if (e.target.tagName === "DIV") {
+  const setPicPosition = (e: MouseEvent<HTMLDivElement>) => {
+    if (e.currentTarget.tagName === "DIV") {
       e.stopPropagation();
-      let rect = e.target.getBoundingClientRect();
+      let rect = e.currentTarget.getBoundingClientRect();
       let x = e.clientX - rect.left;
       let y = e.clientY - rect.top;
       setImagePos([x + 50, y - 50]);
@@ -59,7 +74,7 @@ const ProjectLine = ({ title, project_type, url, link_title }) => {
         </Text>
         <MotionImage
           position="absolute"
-          src="https://bit.ly/dan-abramov"
+          src={image_link}
           variants={variants}
           animate={mouseOver ? "visible" : "hidden"}
           transition={{

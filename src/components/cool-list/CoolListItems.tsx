@@ -3,7 +3,7 @@ import CoolListItem from "./CoolListItem";
 import { Box, Container, Text } from "@chakra-ui/react";
 import Section from "../layout/Section";
 
-const CoolListItems = ({ items }) => {
+const CoolListItems = () => {
   const ListItems = [
     "React",
     "Gatsby",

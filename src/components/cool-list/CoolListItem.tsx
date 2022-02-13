@@ -1,7 +1,12 @@
 import React from "react";
+// @ts-ignore
 import { Box, Text } from "@chakra-ui/react";
 
-const CoolListItem = ({ title }) => {
+type CoolListItemProps = {
+  title: string;
+};
+
+const CoolListItem = ({ title }: CoolListItemProps) => {
   const getRandomColor = () => {
     return "#" + Math.floor(Math.random() * 16777215).toString(16);
   };
@@ -9,7 +14,8 @@ const CoolListItem = ({ title }) => {
     <Box
       display="inline-block"
       fontSize="3xl"
-      bg={getRandomColor}
+      // @ts-ignore
+      bg={getRandomColor()}
       borderRadius="full"
       px="4"
       py="2"
